@@ -26,7 +26,10 @@ def read_input_file(path, max_size=None):
     :return: networkx Graph is the input is well formed, AssertionError thrown otherwise
     """
     with open(path, "r") as fo:
-        n = fo.readline().strip()
+        try:
+            n = fo.readline().strip()
+        except UnicodeDecodeError:
+            print(path)
         assert n.isdigit()
         n = int(n)
 
@@ -106,7 +109,7 @@ def read_output_file(path, G):
 
 
 def write_output_file(T, path):
-    with open(path, "w") as fo:
+    with open(path, "w+") as fo:
         fo.write(" ".join(map(str, T.nodes)) + "\n")
         lines = nx.generate_edgelist(T, data=False)
         fo.writelines("\n".join(lines))

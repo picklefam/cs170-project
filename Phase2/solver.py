@@ -11,33 +11,40 @@ import sys
 from itertools import chain, combinations
 
 
-# In[24]:
+# In[29]:
+
+
+# def solve(G):
+#     """
+#     Args:
+#         G: networkx.Graph
+#     Returns:
+#         T: networkx.Graph
+#     """
+#     # TODO: your code here!
+#     T = nx.minimum_spanning_tree(G)
+#     apd = average_pairwise_distance_fast(T)
+#     while not nx.classes.function.is_empty(T):
+#         flag = False
+#         leaves = [n for n, d in T.degree() if d == 1]
+#         for leaf in leaves:
+#             subtree = T.copy()
+#             subtree.remove_node(leaf)
+#             new_apd = average_pairwise_distance_fast(subtree)
+#             if is_valid_network(G, subtree) and new_apd < apd:
+#                 T = subtree
+#                 apd = new_apd
+#                 flag = True
+#         # flag = False => no better tree available
+#     if not flag:
+#         return T
+
+
+# In[30]:
 
 
 def solve(G):
-    """
-    Args:
-        G: networkx.Graph
-    Returns:
-        T: networkx.Graph
-    """
-    # TODO: your code here!
-    T = nx.minimum_spanning_tree(G)
-    apd = average_pairwise_distance_fast(T)
-    while not T.is_empty():
-        flag = False
-        leaves = [n for n, d in T.degree() if d == 1]
-        for leaf in leaves:
-            subtree = T.copy()
-            subtree.remove_node(leaf)
-            new_apd = average_pairwise_distance_fast(subtree)
-            if is_valid_network(subtree) and new_apd < apd:
-                T = subtree
-                apd = new_apd
-                flag = True
-        # flag = False => no better tree available
-    if not flag:
-        return T
+    return nx.minimum_spanning_tree(G)
 
 
 # In[25]:
@@ -55,12 +62,12 @@ def solve(G):
 # In[10]:
 
 
-if __name__ == '__main__':
-    assert len(sys.argv) == 2
-    path = sys.argv[1]
-    G = read_input_file(path)
-    T = solve(G)
-    assert is_valid_network(G, T)
-    print("Average  pairwise distance: {}".format(average_pairwise_distance(T)))
-    write_output_file(T, 'out/test.out')
+# if __name__ == '__main__':
+#     assert len(sys.argv) == 2
+#     path = sys.argv[1]
+#     G = read_input_file(path)
+#     T = solve(G)
+#     assert is_valid_network(G, T)
+#     print("Average  pairwise distance: {}".format(average_pairwise_distance(T)))
+#     write_output_file(T, 'out/test.out')
 
