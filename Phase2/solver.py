@@ -43,8 +43,15 @@ from itertools import chain, combinations
 # In[30]:
 
 
+# def solve(G):
+#     return nx.minimum_spanning_tree(G)
+
+
+# In[38]:
+
+
 def solve(G):
-    return nx.minimum_spanning_tree(G)
+    return G
 
 
 # In[25]:
