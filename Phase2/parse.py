@@ -110,7 +110,10 @@ def read_output_file(path, G):
 
 def write_output_file(T, path):
     with open(path, "w+") as fo:
-        fo.write(" ".join(map(str, T.nodes)) + "\n")
+        try:
+            fo.write(" ".join(map(str, T.nodes)) + "\n")
+        except AttributeError:
+            print(path)
         lines = nx.generate_edgelist(T, data=False)
         fo.writelines("\n".join(lines))
         fo.close()
