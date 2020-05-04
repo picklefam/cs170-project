@@ -1,0 +1,13 @@
+#################################
+## Grace Qi, Jonathan Holobetz ##
+#################################
+
+HOW TO RUN OUR NETWORK SOLVER:
+1. Make sure you have the following in the current directory:
+    (a) solver.py (ours)
+    (b) driver.py (ours)
+    (c) Provided skeleton files (parse.py, utils.py, prepare_submission.py etc.)
+2. Run the following:
+>>> mkdir submission
+>>> python3 driver.py
+>>> python3 prepare_submission.py submission/ submission.json
